@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="main-body">
     
     <div id="intro-screen">
         <button id="open-btn">Tap to reveal your greeting ✨</button>
@@ -17,22 +17,27 @@
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="night-sky">
-        <div class="geo-star gstar1"></div>
-        <div class="geo-star gstar2"></div>
-        <div class="geo-star gstar3"></div>
+    <div class="night-sky" id="sky">
+        
+        <div class="geo-star g1"></div><div class="geo-star g2"></div>
+        <div class="geo-star g3"></div><div class="geo-star g4"></div>
+        <div class="geo-star g5"></div><div class="geo-star g6"></div>
+        <div class="geo-star g7"></div><div class="geo-star g8"></div>
 
-        <div class="mandala-container">
-            <svg viewBox="0 0 100 100" class="mandala-svg">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(251, 220, 115, 0.2)" stroke-width="0.5" />
-                <path d="M50 5 L55 45 L95 50 L55 55 L50 95 L45 55 L5 50 L45 45 Z" fill="none" stroke="rgba(251, 220, 115, 0.3)" stroke-width="0.5" />
-                <rect x="30" y="30" width="40" height="40" fill="none" stroke="rgba(251, 220, 115, 0.2)" stroke-width="0.5" transform="rotate(45 50 50)" />
-                <circle cx="50" cy="50" r="15" fill="none" stroke="rgba(251, 220, 115, 0.4)" stroke-width="0.3" />
+        <div class="mandala-container" id="mandala">
+            <svg viewBox="0 0 200 200" class="mandala-svg">
+                <g fill="none" stroke="rgba(251, 220, 115, 0.4)" stroke-width="0.5">
+                    <circle cx="100" cy="100" r="90"/>
+                    <circle cx="100" cy="100" r="70"/>
+                    <path d="M100 10 L110 90 L190 100 L110 110 L100 190 L90 110 L10 100 L90 90 Z"/>
+                    <path d="M100 30 L105 95 L170 100 L105 105 L100 170 L95 105 L30 100 L95 95 Z" transform="rotate(45 100 100)"/>
+                    <circle cx="100" cy="100" r="30"/>
+                    <path d="M100 70 A30 30 0 0 1 130 100 A30 30 0 0 1 100 130 A30 30 0 0 1 70 100 A30 30 0 0 1 100 70" stroke-width="1"/>
+                </g>
             </svg>
         </div>
 
         <div class="shooting-star"></div>
-        <div class="shooting-star star-2"></div>
 
         <div class="lantern-container">
             <div class="lantern-chain"></div>
@@ -47,12 +52,6 @@
         </div>
 
         <div class="moon"></div>
-
-        <div class="star star1"></div>
-        <div class="star star2"></div>
-        <div class="star star3"></div>
-        <div class="star star4"></div>
-        <div class="star star5"></div>
 
         <div class="greeting-card">
             <h1 class="elegant-greeting">Eid Mubarak<span id="recipient-name"></span></h1>
@@ -69,8 +68,10 @@
 
         const introScreen = document.getElementById('intro-screen');
         const openBtn = document.getElementById('open-btn');
+        const mandala = document.getElementById('mandala');
         const audio = document.getElementById('bg-music');
 
+        // Opening the Gift
         openBtn.addEventListener('click', function() {
             audio.play(); 
             introScreen.style.opacity = '0'; 
@@ -78,6 +79,14 @@
             document.body.classList.add('unboxed');
         });
 
+        // MANDALA TRIGGER: On click or tap
+        document.addEventListener('mousedown', function() {
+            if(document.body.classList.contains('unboxed')) {
+                mandala.classList.toggle('active');
+            }
+        });
+
+        // Sparkle effect
         function createSparkle(x, y) {
             const sparkle = document.createElement('div');
             sparkle.className = 'magic-sparkle';
@@ -86,9 +95,7 @@
             document.body.appendChild(sparkle);
             setTimeout(() => { sparkle.remove(); }, 800);
         }
-
         document.addEventListener('mousemove', (e) => { if(Math.random() > 0.4) createSparkle(e.clientX, e.clientY); });
-        document.addEventListener('touchmove', (e) => { if(Math.random() > 0.4) createSparkle(e.touches[0].clientX, e.touches[0].clientY); });
     </script>
 </body>
 </html>
