@@ -23,18 +23,19 @@
         <div class="geo-star g3"></div><div class="geo-star g4"></div>
         <div class="geo-star g5"></div><div class="geo-star g6"></div>
         <div class="geo-star g7"></div><div class="geo-star g8"></div>
+        <div class="geo-star g9"></div><div class="geo-star g10"></div>
+        <div class="geo-star g11"></div><div class="geo-star g12"></div>
 
         <div class="shooting-star"></div>
 
         <div class="lantern-container">
             <div class="lantern-chain"></div>
-            <div class="lantern">
-                <div class="lantern-top"></div>
-                <div class="lantern-dome"></div>
-                <div class="lantern-body">
-                    <div class="lantern-candle"></div>
+            <div class="lantern-frame">
+                <div class="lantern-cap"></div>
+                <div class="lantern-glass">
+                    <div class="lantern-flame"></div>
                 </div>
-                <div class="lantern-base"></div>
+                <div class="lantern-footer"></div>
             </div>
         </div>
 
@@ -47,7 +48,6 @@
     </div>
 
     <script>
-        // Custom Name Link Logic
         const urlParams = new URLSearchParams(window.location.search);
         const customName = urlParams.get('to');
         if (customName) {
@@ -65,40 +65,28 @@
             document.body.classList.add('unboxed');
         });
 
-        // MANDALA GENERATOR: Creates a mandala at click/tap spot
+        // Interactive Spot Mandala
         function spawnMandala(x, y) {
             if(!document.body.classList.contains('unboxed')) return;
-
             const container = document.createElement('div');
             container.className = 'mandala-burst';
             container.style.left = x + 'px';
             container.style.top = y + 'px';
-
-            // Intricate SVG Pattern
             container.innerHTML = `
                 <svg viewBox="0 0 200 200" class="mandala-svg">
                     <g fill="none" stroke="rgba(251, 220, 115, 0.5)" stroke-width="0.6">
-                        <circle cx="100" cy="100" r="85"/>
+                        <circle cx="100" cy="100" r="85"/><circle cx="100" cy="100" r="50"/>
                         <path d="M100 10 L110 90 L190 100 L110 110 L100 190 L90 110 L10 100 L90 90 Z"/>
                         <path d="M100 30 L105 95 L170 100 L105 105 L100 170 L95 105 L30 100 L95 95 Z" transform="rotate(45 100 100)"/>
-                        <circle cx="100" cy="100" r="35" stroke-dasharray="2,2"/>
                     </g>
-                </svg>
-            `;
-
+                </svg>`;
             document.body.appendChild(container);
-
-            // Automatically remove from code after the 3-second animation ends
             setTimeout(() => { container.remove(); }, 3000);
         }
 
-        // Trigger on Click or Tap
-        document.addEventListener('mousedown', (e) => { spawnMandala(e.clientX, e.clientY); });
-        document.addEventListener('touchstart', (e) => { 
-            spawnMandala(e.touches[0].clientX, e.touches[0].clientY); 
-        });
+        document.addEventListener('mousedown', (e) => spawnMandala(e.clientX, e.clientY));
+        document.addEventListener('touchstart', (e) => spawnMandala(e.touches[0].clientX, e.touches[0].clientY));
 
-        // Sparkle effect (kept for extra magic)
         function createSparkle(x, y) {
             const sparkle = document.createElement('div');
             sparkle.className = 'magic-sparkle';
