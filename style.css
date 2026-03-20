@@ -10,7 +10,7 @@ body {
 .night-sky { position: relative; width: 100vw; height: 100vh; }
 
 /* =========================================
-   The Intro Screen
+   Luxury Gold Intro Button
    ========================================= */
 #intro-screen {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -18,17 +18,24 @@ body {
     justify-content: center; align-items: center; transition: opacity 1s ease-in-out;
 }
 #open-btn {
-    background: rgba(251, 220, 115, 0.1); border: 1px solid rgba(251, 220, 115, 0.5);
-    color: #fbdc73; padding: 15px 30px; font-size: 1.2rem; border-radius: 30px;
-    cursor: pointer; font-family: 'Playfair Display', serif; letter-spacing: 1px;
-    box-shadow: 0 0 15px rgba(251, 220, 115, 0.2);
-    animation: btnPulse 2s infinite alternate; transition: all 0.3s;
+    background: rgba(251, 220, 115, 0.05); /* Subtle gold tint */
+    border: 1px solid #fbdc73; /* Solid gold border */
+    color: #fbdc73; /* Gold text */
+    padding: 18px 35px; font-size: 1.2rem; border-radius: 50px;
+    cursor: pointer; font-family: 'Playfair Display', serif; letter-spacing: 2px;
+    box-shadow: 0 0 20px rgba(251, 220, 115, 0.2);
+    animation: goldPulse 2s infinite alternate; 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-#open-btn:hover { background: rgba(251, 220, 115, 0.2); transform: scale(1.05); }
+#open-btn:hover { 
+    background: rgba(251, 220, 115, 0.2); 
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(251, 220, 115, 0.5);
+}
 
-@keyframes btnPulse {
-    0% { box-shadow: 0 0 10px rgba(251, 220, 115, 0.2); }
-    100% { box-shadow: 0 0 25px rgba(251, 220, 115, 0.6); }
+@keyframes goldPulse {
+    0% { box-shadow: 0 0 10px rgba(251, 220, 115, 0.1); border-color: rgba(251, 220, 115, 0.4); }
+    100% { box-shadow: 0 0 25px rgba(251, 220, 115, 0.6); border-color: rgba(251, 220, 115, 1); }
 }
 
 /* =========================================
@@ -60,14 +67,13 @@ body {
 .star-2 { top: 30%; left: -10%; animation-delay: 2.5s; animation-duration: 6s; }
 
 /* =========================================
-   Swinging Lantern (Classic Gold)
+   Swinging Lantern
    ========================================= */
 .lantern-container {
     position: absolute; top: 0; right: 15%; display: flex; flex-direction: column;
     align-items: center; transform-origin: top center; animation: swing 3s ease-in-out infinite alternate; z-index: 10;
 }
 .lantern-chain { width: 2px; height: 80px; background-color: #d4af37; }
-.lantern { display: flex; flex-direction: column; align-items: center; }
 .lantern-top {
     width: 20px; height: 0; border-bottom: 25px solid #d4af37; border-left: 15px solid transparent; border-right: 15px solid transparent; border-radius: 5px 5px 0 0;
 }
@@ -83,27 +89,24 @@ body {
 .lantern-base { width: 30px; height: 12px; background-color: #d4af37; border-radius: 0 0 5px 5px; margin-top: -2px; }
 
 /* =========================================
-   Bright White Moon (Gold Glow)
+   White Moon (Gold Glow)
    ========================================= */
 .moon {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     width: 140px; height: 140px; border-radius: 50%;
-    /* Bright White Crescent */
-    box-shadow: 25px 15px 0 0 #ffffff; 
+    box-shadow: 25px 15px 0 0 #ffffff; /* Bright White */
     opacity: 0;
 }
 .moon::before {
     content: ''; position: absolute; top: 15px; left: 25px; width: 100%; height: 100%;
-    border-radius: 50%; 
-    /* Preserved Gold Glow */
-    box-shadow: 0 0 70px 25px rgba(251, 220, 115, 0.25);
+    border-radius: 50%; box-shadow: 0 0 70px 25px rgba(251, 220, 115, 0.25);
 }
 body.unboxed .moon {
     animation: moonRise 3s ease-out 0.5s forwards;
 }
 
 /* =========================================
-   Glassmorphism Card & Text
+   Glassmorphism Card
    ========================================= */
 .greeting-card {
     position: absolute; top: 65%; left: 50%; transform: translate(-50%, 0);
@@ -122,18 +125,6 @@ body.unboxed .greeting-card {
 .sub-greeting {
     font-size: 1.1rem; font-weight: 400; color: #e0e8f0; margin: 0; letter-spacing: 0.5px; line-height: 1.6;
 }
-
-/* =========================================
-   Twinkling Stars
-   ========================================= */
-.star { position: absolute; background-color: #fff; border-radius: 50%; box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8); opacity: 0; }
-.star1 { width: 4px; height: 4px; top: 20%; left: 25%; animation: twinkle 4s infinite 1s; }
-.star2 { width: 3px; height: 3px; top: 35%; left: 75%; animation: twinkle 3s infinite 2s; }
-.star3 { width: 5px; height: 5px; top: 15%; left: 55%; animation: twinkle 5s infinite 0.5s; }
-.star4 { width: 2px; height: 2px; top: 50%; left: 15%; animation: twinkle 3.5s infinite 1.5s; }
-.star5 { width: 4px; height: 4px; top: 25%; left: 85%; animation: twinkle 4.5s infinite 0.2s; }
-.star6 { width: 3px; height: 3px; top: 10%; left: 40%; animation: twinkle 3s infinite 1.2s; }
-.star7 { width: 2px; height: 2px; top: 60%; left: 80%; animation: twinkle 4s infinite 0.8s; }
 
 /* =========================================
    Animations
@@ -156,3 +147,13 @@ body.unboxed .greeting-card {
     .moon { width: 100px; height: 100px; }
     .lantern-container { right: 5%; transform: scale(0.7); transform-origin: top center; }
 }
+
+/* Star settings (maintained) */
+.star { position: absolute; background-color: #fff; border-radius: 50%; box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8); opacity: 0; }
+.star1 { width: 4px; height: 4px; top: 20%; left: 25%; animation: twinkle 4s infinite 1s; }
+.star2 { width: 3px; height: 3px; top: 35%; left: 75%; animation: twinkle 3s infinite 2s; }
+.star3 { width: 5px; height: 5px; top: 15%; left: 55%; animation: twinkle 5s infinite 0.5s; }
+.star4 { width: 2px; height: 2px; top: 50%; left: 15%; animation: twinkle 3.5s infinite 1.5s; }
+.star5 { width: 4px; height: 4px; top: 25%; left: 85%; animation: twinkle 4.5s infinite 0.2s; }
+.star6 { width: 3px; height: 3px; top: 10%; left: 40%; animation: twinkle 3s infinite 1.2s; }
+.star7 { width: 2px; height: 2px; top: 60%; left: 80%; animation: twinkle 4s infinite 0.8s; }
