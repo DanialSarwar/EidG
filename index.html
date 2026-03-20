@@ -18,6 +18,7 @@
     </audio>
 
     <div class="night-sky">
+        
         <div class="shooting-star"></div>
         <div class="shooting-star star-2"></div>
 
@@ -27,6 +28,7 @@
                 <div class="lantern-top"></div>
                 <div class="lantern-body">
                     <div class="lantern-candle"></div>
+                    <div class="lantern-inscription">Eid</div>
                 </div>
                 <div class="lantern-base"></div>
             </div>
@@ -49,6 +51,7 @@
     </div>
 
     <script>
+        // Custom Name Trick
         const urlParams = new URLSearchParams(window.location.search);
         const customName = urlParams.get('to');
         const nameElement = document.getElementById('recipient-name');
@@ -58,6 +61,7 @@
             nameElement.innerText = ", " + formattedName;
         }
 
+        // Unboxing Reveal
         const introScreen = document.getElementById('intro-screen');
         const openBtn = document.getElementById('open-btn');
         const audio = document.getElementById('bg-music');
@@ -65,18 +69,22 @@
         openBtn.addEventListener('click', function() {
             audio.play(); 
             introScreen.style.opacity = '0'; 
+            
             setTimeout(() => {
                 introScreen.style.display = 'none';
             }, 1000);
+            
             document.body.classList.add('unboxed');
         });
 
+        // Magic Touch Sparkles (Now Gold)
         function createSparkle(x, y) {
             const sparkle = document.createElement('div');
             sparkle.className = 'magic-sparkle';
             sparkle.style.left = x + 'px';
             sparkle.style.top = y + 'px';
             document.body.appendChild(sparkle);
+            
             setTimeout(() => { sparkle.remove(); }, 800);
         }
 
