@@ -3,7 +3,6 @@
    ========================================= */
 body {
     margin: 0; padding: 0;
-    /* Deep Emerald/Teal gradient */
     background: radial-gradient(circle at center, #063b2f 0%, #01120e 100%);
     height: 100vh; display: flex; justify-content: center; align-items: center;
     font-family: 'Poppins', sans-serif; overflow: hidden; color: #fff;
@@ -84,16 +83,20 @@ body {
 .lantern-base { width: 30px; height: 12px; background-color: #d4af37; border-radius: 0 0 5px 5px; margin-top: -2px; }
 
 /* =========================================
-   Glowing Crescent Moon (Gold)
+   Bright White Moon (Gold Glow)
    ========================================= */
 .moon {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     width: 140px; height: 140px; border-radius: 50%;
-    box-shadow: 25px 15px 0 0 #fbdc73; opacity: 0;
+    /* Bright White Crescent */
+    box-shadow: 25px 15px 0 0 #ffffff; 
+    opacity: 0;
 }
 .moon::before {
     content: ''; position: absolute; top: 15px; left: 25px; width: 100%; height: 100%;
-    border-radius: 50%; box-shadow: 0 0 70px 25px rgba(251, 220, 115, 0.25);
+    border-radius: 50%; 
+    /* Preserved Gold Glow */
+    box-shadow: 0 0 70px 25px rgba(251, 220, 115, 0.25);
 }
 body.unboxed .moon {
     animation: moonRise 3s ease-out 0.5s forwards;
