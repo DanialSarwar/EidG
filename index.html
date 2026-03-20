@@ -44,23 +44,25 @@
         <div class="star star7"></div>
 
         <div class="greeting-card">
-            <h1 class="elegant-greeting">Eid Mubarak, <span id="recipient-name">Friend</span></h1>
+            <h1 class="elegant-greeting">Eid Mubarak<span id="recipient-name"></span></h1>
             <p class="sub-greeting">Wishing you and your family a truly blessed, peaceful, and joyous Eid.</p>
         </div>
         
     </div>
 
     <script>
-        // Custom Name Trick
+        // --- Custom Name Logic ---
         const urlParams = new URLSearchParams(window.location.search);
         const customName = urlParams.get('to');
+        const nameElement = document.getElementById('recipient-name');
         
         if (customName) {
             const formattedName = customName.charAt(0).toUpperCase() + customName.slice(1);
-            document.getElementById('recipient-name').innerText = formattedName;
+            // Adds a comma and the name only if a name exists in the URL
+            nameElement.innerText = ", " + formattedName;
         }
 
-        // Unboxing Reveal
+        // --- Unboxing Reveal ---
         const introScreen = document.getElementById('intro-screen');
         const openBtn = document.getElementById('open-btn');
         const audio = document.getElementById('bg-music');
@@ -68,22 +70,19 @@
         openBtn.addEventListener('click', function() {
             audio.play(); 
             introScreen.style.opacity = '0'; 
-            
             setTimeout(() => {
                 introScreen.style.display = 'none';
             }, 1000);
-            
             document.body.classList.add('unboxed');
         });
 
-        // Magic Touch Sparkles (Now Gold)
+        // --- Gold Magic Sparkles ---
         function createSparkle(x, y) {
             const sparkle = document.createElement('div');
             sparkle.className = 'magic-sparkle';
             sparkle.style.left = x + 'px';
             sparkle.style.top = y + 'px';
             document.body.appendChild(sparkle);
-            
             setTimeout(() => { sparkle.remove(); }, 800);
         }
 
