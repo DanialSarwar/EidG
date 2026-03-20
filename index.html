@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eid Mubarak Greeting</title>
+    <title>Eid Mubarak</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
+    
+    <div id="intro-screen">
+        <button id="open-btn">Tap to open your greeting ✨</button>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="night-sky">
-        
+
         <div class="shooting-star"></div>
         <div class="shooting-star star-2"></div>
 
@@ -34,10 +44,57 @@
         <div class="star star7"></div>
 
         <div class="greeting-card">
-            <h1 class="greeting">Eid Mubarak</h1>
-            <p class="sub-greeting">May your day be filled with light and joy.</p>
+            <h1 class="elegant-greeting">Eid Mubarak, <span id="recipient-name">Friend</span></h1>
+            <p class="sub-greeting">Wishing you and your family a truly blessed, peaceful, and joyous Eid.</p>
         </div>
         
     </div>
+
+    <script>
+        // Custom Name Trick
+        const urlParams = new URLSearchParams(window.location.search);
+        const customName = urlParams.get('to');
+        
+        if (customName) {
+            const formattedName = customName.charAt(0).toUpperCase() + customName.slice(1);
+            document.getElementById('recipient-name').innerText = formattedName;
+        }
+
+        // Unboxing Reveal
+        const introScreen = document.getElementById('intro-screen');
+        const openBtn = document.getElementById('open-btn');
+        const audio = document.getElementById('bg-music');
+
+        openBtn.addEventListener('click', function() {
+            audio.play(); 
+            introScreen.style.opacity = '0'; 
+            
+            setTimeout(() => {
+                introScreen.style.display = 'none';
+            }, 1000);
+            
+            document.body.classList.add('unboxed');
+        });
+
+        // Magic Touch Sparkles (Now Gold)
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'magic-sparkle';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => { sparkle.remove(); }, 800);
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            if(Math.random() > 0.4) createSparkle(e.clientX, e.clientY);
+        });
+
+        document.addEventListener('touchmove', function(e) {
+            let touch = e.touches[0];
+            if(Math.random() > 0.4) createSparkle(touch.clientX, touch.clientY);
+        });
+    </script>
 </body>
 </html>
