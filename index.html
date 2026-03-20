@@ -26,7 +26,7 @@
         <div class="geo-star g9"></div><div class="geo-star g10"></div>
         <div class="geo-star g11"></div><div class="geo-star g12"></div>
 
-        <div class="shooting-star"></div>
+        <div class="shooting-star-v2"></div>
 
         <div class="lantern-container">
             <div class="lantern-chain"></div>
@@ -80,7 +80,7 @@
                     </g>
                 </svg>`;
             document.body.appendChild(container);
-            setTimeout(() => { container.remove(); }, 3000);
+            setTimeout(() => { container.remove(); }, 3500);
         }
 
         document.addEventListener('mousedown', (e) => spawnMandala(e.clientX, e.clientY));
