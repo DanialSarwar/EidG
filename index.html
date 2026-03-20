@@ -65,7 +65,6 @@
             document.body.classList.add('unboxed');
         });
 
-        // Interactive Spot Mandala
         function spawnMandala(x, y) {
             if(!document.body.classList.contains('unboxed')) return;
             const container = document.createElement('div');
@@ -74,7 +73,7 @@
             container.style.top = y + 'px';
             container.innerHTML = `
                 <svg viewBox="0 0 200 200" class="mandala-svg">
-                    <g fill="none" stroke="rgba(251, 220, 115, 0.5)" stroke-width="0.6">
+                    <g fill="none" stroke="rgba(251, 220, 115, 0.4)" stroke-width="0.6">
                         <circle cx="100" cy="100" r="85"/><circle cx="100" cy="100" r="50"/>
                         <path d="M100 10 L110 90 L190 100 L110 110 L100 190 L90 110 L10 100 L90 90 Z"/>
                         <path d="M100 30 L105 95 L170 100 L105 105 L100 170 L95 105 L30 100 L95 95 Z" transform="rotate(45 100 100)"/>
