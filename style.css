@@ -52,7 +52,7 @@ body {
     box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 1);
     
     /* Logic: First wait 2s, then cycle every 4s */
-    animation: shootMain 4s linear infinite;
+    animation: shootMain 8s linear infinite;
     animation-delay: 2s; 
     
     opacity: 0;
